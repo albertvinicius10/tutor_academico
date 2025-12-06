@@ -1,84 +1,184 @@
-Tutor Acadêmico API
-Bem-vindo ao repositório do Tutor Acadêmico API, um projeto de chatbot inteligente construído com FastAPI para auxiliar estudantes em diversas matérias. A aplicação é capaz de responder a perguntas, manter o contexto das conversas e, futuramente, recomendar conteúdos educacionais.
+# 🌟 Tutor Acadêmico API  
+### 🚀 A Plataforma Inteligente para Auxiliar Estudantes com Tecnologia de Ponta
 
-Tecnologias
-O projeto utiliza um stack moderno e robusto para garantir performance, escalabilidade e facilidade de desenvolvimento.
+O **Tutor Acadêmico API** é uma solução moderna construída com **FastAPI**, **LLMs avançados** (OpenAI + Google Gemini), autenticação segura com **JWT**, persistência robusta com **PostgreSQL**, e um aplicativo **Flutter** para interação dos usuários.  
 
-FastAPI: Um framework web de alta performance para a construção da API.
+Ele foi projetado para oferecer **respostas inteligentes**, **memória de conversa** e futuramente **recomendações personalizadas de aprendizado**.
 
-Python 3.11: A linguagem de programação principal do projeto.
+---
 
-PostgreSQL: Um sistema de banco de dados relacional robusto para persistir usuários e conversas.
+# 📘 Sumário  
+- [✨ Visão Geral](#-visão-geral)  
+- [🧠 Principais Funcionalidades](#-principais-funcionalidades)  
+- [⚙️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)  
+- [📁 Estrutura do Projeto](#-estrutura-do-projeto)  
+- [🐳 Como Rodar o Backend](#-como-rodar-o-backend)  
+- [📱 Como Rodar o Frontend](#-como-rodar-o-frontend)  
+- [🧭 Como Usar o Aplicativo](#-como-usar-o-aplicativo)  
+- [📡 Uso da API](#-uso-da-api)  
+- [🔮 Roadmap Futuro](#-roadmap-futuro)  
+- [📌 Informações Complementares](#-informações-complementares)
 
-Docker & Docker Compose: Para gerenciar os ambientes de desenvolvimento e produção de forma consistente.
+---
 
-SQLAlchemy: O ORM (Object-Relational Mapper) para interagir com o banco de dados de forma simples e orientada a objetos.
+# ✨ Visão Geral
 
-LangChain: Um framework para orquestrar e gerenciar a interação com modelos de linguagem (LLMs).
+O Tutor Acadêmico API foi criado para ser:
 
-OpenAI & Google Gemini: Modelos de linguagem de ponta usados para gerar as respostas do chatbot.
+- 🧠 **Inteligente** — capaz de manter o contexto da conversa  
+- 📚 **Educacional** — orientado para auxiliar estudantes  
+- ⚡ **Rápido e Escalável** — graças ao FastAPI e Docker  
+- 🔐 **Seguro** — com autenticação JWT  
+- 📲 **Completo** — com um app Flutter integrado  
 
-JWT (JSON Web Tokens): Usado para autenticação segura e autorização dos usuários.
+---
 
-Estrutura do Projeto
-A organização do projeto segue uma estrutura modular, facilitando a manutenção e a adição de novas funcionalidades.
+# 🧠 Principais Funcionalidades
 
+✔️ Chat com contexto  
+✔️ Histórico de conversas  
+✔️ Autenticação JWT  
+✔️ Escolha entre **OpenAI** ou **Google Gemini**  
+✔️ Arquitetura dockerizada  
+✔️ App Flutter integrado à API  
+
+---
+
+# ⚙️ Tecnologias Utilizadas
+
+| Tecnologia | Descrição |
+|-----------|-----------|
+| **FastAPI** | Backend rápido e assíncrono |
+| **Python 3.11** | Linguagem principal |
+| **PostgreSQL** | Armazenamento de usuários e conversas |
+| **Docker & Docker Compose** | Ambientes reproduzíveis |
+| **SQLAlchemy** | ORM para modelagem e queries |
+| **LangChain** | Orquestração de modelos de linguagem |
+| **OpenAI** | Respostas inteligentes |
+| **Google Gemini** | Alternativa de LLM avançada |
+| **JWT** | Autenticação segura |
+| **Flutter** | Aplicativo mobile para o usuário final |
+
+---
+
+# 📁 Estrutura do Projeto
+
+```text
 tutor_academico/
-│── app/
-│   ├── main.py            # Ponto de entrada da API
-│   ├── config.py          # Variáveis de ambiente
-│   ├── db.py              # Configuração da conexão com o banco de dados
-│   ├── models.py          # Definição dos modelos de dados (SQLAlchemy)
-│   ├── schemas.py         # Schemas de validação de dados (Pydantic)
-│   ├── utils.py           # Funções utilitárias (criação de token, hash de senha, etc.)
-│   ├── auth.py            # Roteador para autenticação de usuários
-│   └── chat.py            # Roteador para a lógica principal do chatbot
+├── backend/
+│   ├── app/
+│   │   ├── main.py          # Ponto de entrada da API
+│   │   ├── config.py        # Variáveis de ambiente
+│   │   ├── db.py            # Conexão com o banco PostgreSQL
+│   │   ├── models.py        # Modelos SQLAlchemy
+│   │   ├── schemas.py       # Schemas Pydantic
+│   │   ├── auth.py          # Autenticação JWT
+│   │   └── chat.py          # Chat e processamento LLM
+│   │
+│   ├── .env                 # Variáveis de ambiente
+│   ├── requirements.txt     # Dependências Python
+│   ├── Dockerfile           # Build do backend
+│   └── docker-compose.yml   # Orquestração backend + banco
 │
-│── .env                   # Variáveis de ambiente para o projeto
-│── requirements.txt       # Dependências Python
-│── Dockerfile             # Definição da imagem Docker do backend
-└── docker-compose.yml     # Orquestração dos serviços (backend e banco de dados)
-Como Rodar
-Siga estes passos para configurar e rodar o projeto localmente usando Docker.
+└── frontend/
+    └── tutor_app/           # Aplicativo Flutter
 
-Pré-requisitos
-Certifique-se de que você tem o Docker e o Docker Compose instalados na sua máquina.
+yaml
+Copiar código
 
-1. Clonar o Repositório e Configurar o Ambiente
-Primeiro, clone este repositório para o seu ambiente local e navegue até o diretório do projeto.
+---
 
-Em seguida, crie o arquivo de variáveis de ambiente .env na raiz do projeto e preencha com as suas credenciais.
+# 🐳 Como Rodar o Backend
 
-Bash
+## 1️⃣ Criar o arquivo `.env`
 
-# Conteúdo do arquivo .env
+Na pasta `backend/`:
+
+```env
 DATABASE_URL=postgresql+psycopg2://user:password@db:5432/tutor_academico
 SECRET_KEY=sua_chave_secreta_aqui
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
-OPENAI_API_KEY=sua_chave_do_openai_aqui
-GOOGLE_API_KEY=sua_chave_do_gemini_aqui
-DEFAULT_LLM_PROVIDER=openai # ou 'gemini'
-2. Rodar com Docker Compose
-Com o arquivo .env configurado, você pode iniciar os contêineres do backend e do banco de dados com um único comando:
-
-Bash
-
+OPENAI_API_KEY=sua_chave_openai
+GOOGLE_API_KEY=sua_chave_gemini
+DEFAULT_LLM_PROVIDER=openai
+2️⃣ Subir o ambiente com Docker
+bash
+Copiar código
 docker-compose up --build
-O flag --build é crucial, pois ele reconstrói as imagens, garantindo que as variáveis de ambiente e as dependências mais recentes sejam carregadas.
+✔️ O --build garante atualização das variáveis e dependências.
 
-3. Acessar a API
-A API estará disponível em http://localhost:8000. Você pode interagir com os endpoints usando a documentação interativa gerada automaticamente pelo Swagger:
+3️⃣ Acessar a API
+🔗 API Base: http://localhost:8000
 
-Swagger UI: http://localhost:8000/docs
+📘 Swagger: http://localhost:8000/docs
 
-Redoc: http://localhost:8000/redoc
+📕 Redoc: http://localhost:8000/redoc
 
-Como Usar a API
-Para interagir com o chatbot, siga estes passos:
+📱 Como Rodar o Frontend (Flutter)
+1️⃣ Abrir a pasta do app
+bash
+Copiar código
+cd frontend/tutor_app
+2️⃣ Instalar dependências
+bash
+Copiar código
+flutter pub get
+3️⃣ Executar o app
+bash
+Copiar código
+flutter run
+🧭 Como Usar o Aplicativo
+Criar conta ou fazer login
 
-Registro / Login: Use os endpoints POST /auth/register ou POST /auth/login para obter um token de acesso.
+Autenticação via JWT
 
-Autenticação: No Swagger, clique no botão "Authorize" e cole o token obtido, no formato Bearer <seu_token>.
+Acessar a lista de conversas
 
-Conversa: Use o endpoint POST /chat/ para iniciar ou continuar uma conversa. A primeira requisição cria uma nova conversa, e as próximas usam o conversation_id para manter o contexto.
+Criar nova conversa (+)
+
+Interagir com o tutor — respostas inteligentes e histórico salvo 🎯
+
+📡 Uso da API
+🔐 Autenticação
+POST /auth/register
+
+POST /auth/login → devolve token JWT
+
+No Swagger clique: Authorize → Bearer <seu_token>
+
+💬 Chat
+Enviar mensagem:
+
+bash
+Copiar código
+POST /chat/
+Primeira requisição → cria a conversa
+
+Próximas → enviar conversation_id para manter o contexto
+
+🔮 Roadmap Futuro
+🚧 Em desenvolvimento para as próximas versões:
+
+📘 Recomendação personalizada de conteúdos
+
+📄 Upload e leitura de PDFs
+
+📊 Dashboard de aprendizado
+
+🎯 Seleção de matéria/tema
+
+🔎 Busca inteligente no histórico
+
+📌 Informações Complementares
+Arquitetura totalmente modular
+
+Fácil integração com novos LLMs
+
+Backend otimizado para produção
+
+Frontend rápido e simples de usar
+
+🎉 Agradecimentos
+Obrigado por utilizar o Tutor Acadêmico API!
+Sinta-se livre para contribuir, abrir issues ou sugerir funcionalidades.

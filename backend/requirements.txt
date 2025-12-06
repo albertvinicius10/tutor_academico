@@ -1,0 +1,21 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+alembic
+pydantic
+python-jose[cryptography]
+passlib[bcrypt]
+py-bcrypt
+langchain
+langchain-openai
+python-dotenv
+langchain-google-genai
+google-api-python-client
+redis
+langchain-chroma # Para o Vector Store ChromaDB
+langchain-community # Dependência para os loaders de documentos
+pypdf # Para carregar documentos PDF 
+tiktoken # Necessário para o text splitter da OpenAI
+sentence-transformers # Para embeddings locais/gratuitos do Hugging Face
+langchain-huggingface # Novo pacote para embeddings do HuggingFace

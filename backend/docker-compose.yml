@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:15
+    container_name: tutor_db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tutor_academico
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  cache:
+    image: redis:7-alpine
+    container_name: tutor_cache
+    restart: always
+    ports:
+      - "6379:6379"
+
+  backend:
+    build:
+      context: . 
+      dockerfile: Dockerfile 
+    container_name: tutor_backend
+    restart: always
+    env_file: .env
+    depends_on:
+      - db
+      - cache
+    ports:
+      - "8000:8000"
+    volumes:
+      
+      - chroma_data:/app/chroma_db 
+
+volumes:
+  db_data:
+  chroma_data:
